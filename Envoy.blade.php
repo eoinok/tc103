@@ -1,4 +1,4 @@
-@servers(['web' => '101.101.101.101'])
+@servers(['web' => '45.77.230.116'])
 @story('deploy')
     git-pull-code
     database-migrate
