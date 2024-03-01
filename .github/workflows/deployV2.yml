@@ -10,10 +10,13 @@ jobs:
         run: |
           mkdir -p ~/.ssh/
           ssh-keyscan -H $REMOTE_HOSTNAME >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
           echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/remote.key
           chmod 600 ~/.ssh/remote.key
           cat >>~/.ssh/config <<END
           Host remote
+            PubKeyAuthentication yes
+            IdentitiesOnly yes
             HostName $REMOTE_HOSTNAME
             User $REMOTE_APP_USERNAME
             IdentityFile ~/.ssh/remote.key
