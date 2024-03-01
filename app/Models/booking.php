@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class booking
  * @package App\Models
- * @version February 13, 2024, 10:46 pm UTC
+ * @version March 1, 2024, 3:41 pm UTC
  *
  * @property \App\Models\Member $memberid
  * @property \App\Models\Court $courtid
