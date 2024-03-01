@@ -1,0 +1,27 @@
+name: GitHub Actions Deploy
+run-name: ${{ github.actor }} has pushed and the repo will be deployed to the server
+on: [push]
+jobs:  
+  deploy:
+    name: "Deploy"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/remote.key
+          chmod 600 ~/.ssh/remote.key
+          cat >>~/.ssh/config <<END
+          Host remote
+            HostName $REMOTE_HOSTNAME
+            User $REMOTE_APP_USERNAME
+            IdentityFile ~/.ssh/remote.key
+            StrictHostKeyChecking no
+          END
+        env:
+          REMOTE_USER: ${{ secrets.REMOTE_APP_USERNAME }}
+          REMOTE_PRIVATE_KEY: ${{ secrets.REMOTE_PRIVATE_KEY }}
+          REMOTE_HOSTNAME: ${{ secrets.REMOTE_HOSTNAME }}
+
+      - name: laravel envoy run deploy
+        run: ssh remote 'cd `ls` && php vendor/bin/envoy run deploy'
