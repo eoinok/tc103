@@ -12,7 +12,7 @@ jobs:
           ssh-keyscan -H $REMOTE_HOSTNAME >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
           echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/remote.key
+          chmod 600 ~/.ssh/id_rsa
           cat >>~/.ssh/config <<END
           Host remote
             PubKeyAuthentication yes
