@@ -27,4 +27,6 @@ jobs:
           REMOTE_PRIVATE_KEY: ${{ secrets.REMOTE_PRIVATE_KEY }}
           REMOTE_HOSTNAME: ${{ secrets.REMOTE_HOSTNAME }}
       - name: laravel envoy run deploy
-        run: "ssh ${{ secrets.REMOTE_APP_USERNAME}}@${{ secrets.REMOTE_HOSTNAME }} 'cd `ls` && php vendor/bin/envoy run deploy'"
+        run: ssh ${{ secrets.REMOTE_APP_USERNAME}}@${{ secrets.REMOTE_HOSTNAME }} 'cd `ls`'
+      - name: run deploy
+        run: ssh ${{ secrets.REMOTE_APP_USERNAME}}@${{ secrets.REMOTE_HOSTNAME }} 'php vendor/bin/envoy run deploy'"
