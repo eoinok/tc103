@@ -14,7 +14,7 @@ jobs:
           echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           cat >>~/.ssh/config <<END
-          Host 45.77.230.116
+          Host $REMOTE_HOSTNAME
             PubKeyAuthentication yes
             IdentitiesOnly yes
             HostName $REMOTE_HOSTNAME
@@ -26,7 +26,5 @@ jobs:
           REMOTE_APP_USERNAME: ${{ secrets.REMOTE_APP_USERNAME }}
           REMOTE_PRIVATE_KEY: ${{ secrets.REMOTE_PRIVATE_KEY }}
           REMOTE_HOSTNAME: ${{ secrets.REMOTE_HOSTNAME }}
-      - name: show config
-        run: cat ~/.ssh/config
       - name: laravel envoy run deploy
-        run: ssh -v 45.77.230.116
+        run: ssh $REMOTE_HOSTNAME 'cd `ls` && php vendor/bin/envoy run deploy'
