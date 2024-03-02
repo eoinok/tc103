@@ -28,4 +28,4 @@ jobs:
           REMOTE_HOSTNAME: ${{ secrets.REMOTE_HOSTNAME }}
 
       - name: laravel envoy run deploy
-        run: ssh remote 'cd `ls` && php vendor/bin/envoy run deploy'
+        run: ssh -v $REMOTE_HOSTNAME
