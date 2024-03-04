@@ -14,3 +14,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('courts.index') }}"
+       class="nav-link {{ Request::is('courts*') ? 'active' : '' }}">
+        <p>Courts</p>
+    </a>
+</li>
+
+

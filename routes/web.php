@@ -22,3 +22,6 @@ Route::resource('members', App\Http\Controllers\MemberController::class);
 
 
 Route::resource('bookings', App\Http\Controllers\bookingController::class);
+
+
+Route::resource('courts', App\Http\Controllers\courtController::class);
