@@ -13,11 +13,18 @@
         <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- Webpack mix npm generated -->
+        <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
+        <script src="{{asset('js/app.js')}}"></script>
     </head>
 
     <body>
         <!-- Bootstrap 5 Navbar -->
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+          <div class="container">
+                <a class="navbar-brand" href="#"><img class="img-responsive" height="80" width="60" src="{{asset('images/logo.jpg')}}"</a>
+          </div>
           <div class="container-fluid">
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -43,9 +50,7 @@
             </div> 
         </div> 
 
-        <!-- Webpack mix npm generated -->
-        <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
-        <script src="{{asset('js/app.js')}}"></script>
+
         @stack('js_scripts')
     </body>
 </html>

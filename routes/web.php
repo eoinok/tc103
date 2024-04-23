@@ -25,3 +25,5 @@ Route::resource('bookings', App\Http\Controllers\bookingController::class);
 
 
 Route::resource('courts', App\Http\Controllers\courtController::class);
+
+Route::get('/map', 'App\Http\Controllers\memberController@showmap')->name('members.showmap');

@@ -59,8 +59,19 @@ class MemberController extends AppBaseController
         $member = $this->memberRepository->create($input);
 
         Flash::success('Member saved successfully.');
-
-        return redirect(route('members.index'));
+        if ($request->usertype = "Service Provider") {
+            
+            return redirect(route('serviceProviders.create'));
+        }
+        if ($request->usertype = "Customer") {
+            
+            return redirect(route('customers.create'));
+        }
+    }
+    
+    public function showmap()
+    {
+        return view('members.showmap');
     }
 
     /**
